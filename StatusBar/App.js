@@ -2,19 +2,21 @@ import { useState } from 'react';
 import { StyleSheet, View, Button, StatusBar } from 'react-native';
 
 export default function App() {
-  const [temaStatus, setTemaStatus] = useState(false);
+  const [visivel, setVisivel] = useState(true);
 
   return (
     <View style={styles.container}>
       <StatusBar
-        backgroundColor={ temaStatus ? '#0027a5ff' : '#bf009fff'}
-        barStyle={'light-content'}
+        backgroundColor="#7c93dfff"
+        barStyle="dark-content"
+        hidden={!visivel}
+        animated={true}
       />
 
       <Button
-        title={temaStatus ? 'Mudar para Status Bar Rosa': 'Mudar para Status Bar Azul'}
-        onPress={() => setTemaStatus(!temaStatus)}
-        color={ temaStatus? '#bf009fff' : '#0027a5ff'}
+        title={visivel ? 'Ocultar StatusBar' : 'Mostrar StatusBar'}
+        onPress={() => setVisivel(!visivel)}
+        color="#7c93dfff"
       />
     </View>
   );
@@ -23,8 +25,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ecececff',
+    backgroundColor: '#ececec',
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
 });
